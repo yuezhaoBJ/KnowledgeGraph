@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript" src="js/d3.min.js"></script>
+	<script type="text/javascript" src="js/strucMap.min.js"></script>
+	<link rel="stylesheet" href="css/strucMap.min.css" />
+
+</head>
+
+<body>
+	<div id="title">C3-NLP Knowledge Graph</div>
+	<div id="topomap" style="margin: 0 auto;"></div>
+</body>
+<script type="text/javascript" src="js/data.js"></script>
+<script type="text/javascript">
+	var nodePX = 0;
+	var nodePY = 0;
+
+	loadData('data/areas.json')
+		.then(({ nodesJson, linksJson }) => {
+			console.log("初始化打印", nodesJson, linksJson);
+			var options = {
+				selector: "#topomap",
+				width: 1440,//实际展开图宽度
+				height: 1440,//实际展开图高度
+				lineLength: 100,
+				//	            textColor:"#000",
+				//	            textFontFamily:'',
+				nodesClick: function (t) {
+					//if(t.index==0) t.fixed=1;//判断如果是第一级，移动后就将它固定
+					t.fixed = 1;
+					console.log(t);
+					var nodeX = JSON.parse(JSON.stringify(t.x));
+					var nodeY = JSON.parse(JSON.stringify(t.y));
+					//xy都没有变，说明没有拖动
+					if ((nodeX == nodePX) && (nodeY == nodePY)) {
+						console.info("跳页面啦~~~~~~");
+					}
+				},
+				nodesDragstart: function (t) {
+					nodePX = JSON.parse(JSON.stringify(t.x));
+					nodePY = JSON.parse(JSON.stringify(t.y));
+					//console.log("移动开始",JSON.parse(JSON.stringify(t.x)),JSON.parse(JSON.stringify(t.y)));
+				}
+			};
+
+			loadMap(options, nodesJson, linksJson);
+		});
+
+</script>
+
+</html>

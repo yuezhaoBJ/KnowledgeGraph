@@ -1,0 +1,127 @@
+[
+    {
+        "lable": "Basic",
+        "areas": [
+            {
+                "lable": "Recurrent Model",
+                "areas": [
+                    {
+                        "lable": "Sequential Model",
+                        "areas": [
+                            {
+                                "lable": "RNN"
+                            },
+                            {
+                                "lable": "LSTM"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "lable": "Convolutional Model",
+                "areas": [
+                    {
+                        "lable": "TextCNN"
+                    }
+                ]
+            },
+            {
+                "lable": "Recursive Model"
+            },
+            {
+                "lable": "Word Embedding",
+                "areas": [
+                    {
+                        "lable": "Word2Vec",
+                        "areas": [
+                            {
+                                "lable": "CBOW"
+                            },
+                            {
+                                "lable": "Skip-gram"
+                            }
+                        ]
+                    },
+                    {
+                        "lable": "Glove"
+                    },
+                    {
+                        "lable": "FastText"
+                    }
+                ]
+            },
+            {
+                "lable": "Attention"
+            },
+            {
+                "lable": "Transformer"
+            }
+        ]
+    },
+    {
+        "lable": "Language Model",
+        "areas": [
+            {
+                "lable": "ELMo"
+            },
+            {
+                "lable": "State of the Art Model",
+                "areas": [
+                    {
+                        "lable": "GPT"
+                    },
+                    {
+                        "lable": "BERT",
+                        "areas": [
+                            {
+                                "lable": "Masking Language Model"
+                            },
+                            {
+                                "lable": "Next Sentence Predict(NSP)"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "lable": "Task",
+        "areas": [
+            {
+                "lable": "POS Tagging"
+            },
+            {
+                "lable": "Parsing"
+            },
+            {
+                "lable": "Named Entity Recognition"
+            },
+            {
+                "lable": "Coreference Resolution"
+            },
+            {
+                "lable": "Sentiment Analysis"
+            },
+            {
+                "lable": "Machine Translation"
+            },
+            {
+                "lable": "Question Answering"
+            },
+            {
+                "lable": "Reading Comprehension"
+            },
+            {
+                "lable": "Text Generation"
+            },
+            {
+                "lable": "Summarization"
+            },
+            {
+                "lable": "Dialogue Systems"
+            }
+        ]
+    }
+]
