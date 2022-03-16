@@ -1,5 +1,7 @@
 {
     "name": "NER",
-    "area": "Named Entity Recognition",
+    "areas": [
+        "Named Entity Recognition"
+    ],
     "status": "active"
 }

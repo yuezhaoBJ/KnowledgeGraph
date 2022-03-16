@@ -1,48 +1,49 @@
-#topomap{
+#topomap {
     width: 1440px;
     height: 1440px;
     background-color: rgb(237, 245, 238);
 }
+
 svg {
-	cursor: move;
-	position: relative
+    cursor: move;
+    position: relative
 }
 
 svg text {
-	font-family: fantasy;
-	font-size: 12px;
-	color: #ffffe0;
+    font-family: fantasy;
+    font-size: 12px;
+    color: #ffffe0;
 }
 
 svg .node {
-	cursor: pointer
+    cursor: pointer
 }
 
 svg .node .ring {
-	stroke-width: 4px;
-	stroke: #6ac6ff;
-	/* opacity: .2;外圈的阴影，我设置为透明看不见 */
-	opacity: 0;
-	transition: opacity .6s
+    stroke-width: 4px;
+    stroke: #6ac6ff;
+    /* opacity: .2;外圈的阴影，我设置为透明看不见 */
+    opacity: 0;
+    transition: opacity .6s
 }
 
 svg .node:active .ring,
 svg .node:hover .ring {
-	opacity: .1
+    opacity: .1
 }
 
 svg .link {
-	fill: none;
-	stroke: #6ac6ff;
-	opacity: .8;
-	stroke-width: 2
+    fill: none;
+    stroke: #6ac6ff;
+    opacity: .8;
+    stroke-width: 2
 }
 
 svg text.desc {
-	fill: #000;
-	font-family: fantasy;
-	font-size: 10px;
-	font-weight: bolder
+    fill: #000;
+    font-family: fantasy;
+    font-size: 10px;
+    font-weight: bolder
 }
 
 
@@ -51,6 +52,28 @@ svg text.desc {
     text-align: center;
     padding: 43px;
     font-size: 33px;
-	font-weight: bold;
-	color: #30B5C7;
+    font-weight: bold;
+    color: #30B5C7;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+tr>td:first-child {
+   width: 20%;
+   font-weight: bolder;
 }

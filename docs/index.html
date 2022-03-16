@@ -12,14 +12,17 @@
 
 <body>
 	<div id="title">C3-NLP Knowledge Graph</div>
-	<div id="topomap" style="margin: 0 auto;"></div>
+	<div id="topomap" style="margin: 0 auto;">
+	</div>
+	<table>
+	</table>
 </body>
-<script type="text/javascript" src="js/data.js"></script>
+<script type="text/javascript" src="js/dataUtils.js"></script>
 <script type="text/javascript">
 	var nodePX = 0;
 	var nodePY = 0;
 
-	loadData('data/areas.json')
+	loadData('data/areas.json', { "fixed": true, "id": 'A', "index": 0, "prop": { "name": "NLP Areas", "size": maxSize }, "x": 724, "y": 616 })
 		.then(({ nodesJson, linksJson }) => {
 			console.log("初始化打印", nodesJson, linksJson);
 			var options = {
@@ -30,9 +33,25 @@
 				//	            textColor:"#000",
 				//	            textFontFamily:'',
 				nodesClick: function (t) {
+					debugger;
 					//if(t.index==0) t.fixed=1;//判断如果是第一级，移动后就将它固定
 					t.fixed = 1;
 					console.log(t);
+					document.querySelector('table').innerHTML =
+						`<tr>
+							<td>Name</td>
+							<td>${t?.prop?.lable}</td>
+						</tr>
+						<tr>
+							<td>Description</td>
+							<td>${t?.prop?.description}</td>
+						</tr>
+						<tr>
+							<td>Link</td>
+							<td>${t?.prop?.links?.map((item)=>{
+								return `<a href="${item.url}" target="_blank">${item.source}</a>`
+							}).join(', ')}</td>
+						</tr>`;
 					var nodeX = JSON.parse(JSON.stringify(t.x));
 					var nodeY = JSON.parse(JSON.stringify(t.y));
 					//xy都没有变，说明没有拖动

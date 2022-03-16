@@ -1,6 +1,6 @@
 const maxSize = 50;
 
-function loadData(path) {
+function loadData(path, rootNode) {
     return new Promise((resolve) => {
         // load json file
         var xobj = new XMLHttpRequest();
@@ -16,7 +16,7 @@ function loadData(path) {
     })
         .then((res) => {
             // process data
-            var nodesJson = [{ "fixed": true, "id": 'A', "index": 0, "prop": { "name": "NLP", "size": maxSize }, "x": 724, "y": 616 }],
+            var nodesJson = [rootNode],
                 linksJson = [];
             let arr = JSON.parse(res);
             let currentIndex = 0;
@@ -25,7 +25,7 @@ function loadData(path) {
                     curParentId = parentId ? `${parentId}-${index}` : `A${index}`;
 
                 currentIndex++;
-                nodesJson.push({ "id": curParentId, "index": iniLevel, "prop": { "name": n.lable, "size": maxSize - iniLevel * 10 } });
+                nodesJson.push({ "id": curParentId, "index": iniLevel, "prop": { "lable": n.lable, "size": maxSize - iniLevel * 10, "description": n.description, links:n.links } });
 
                 let curParentIndex = nodesJson.length - 1;
                 linksJson.push({ "source": parentIndex, "target": curParentIndex });
