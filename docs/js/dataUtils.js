@@ -25,7 +25,7 @@ function loadData(path, rootNode) {
                     curParentId = parentId ? `${parentId}-${index}` : `A${index}`;
 
                 currentIndex++;
-                nodesJson.push({ "id": curParentId, "index": iniLevel, "prop": { "lable": n.lable, "size": maxSize - iniLevel * 10, "description": n.description, links:n.links } });
+                nodesJson.push({ "id": curParentId, "index": iniLevel, "prop": { lable: n.lable, size: maxSize - iniLevel * 10, description: n.description, links: n.links, status: n.status } });
 
                 let curParentIndex = nodesJson.length - 1;
                 linksJson.push({ "source": parentIndex, "target": curParentIndex });

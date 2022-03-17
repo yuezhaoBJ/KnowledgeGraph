@@ -2,6 +2,7 @@
     {
         "lable": "Basic",
         "description": "NLP领域相关的理论知识",
+        "status": "researched",
         "areas": [
             {
                 "lable": "HMM",
@@ -79,7 +80,9 @@
                 "lable": "pre-training + fine-tuning"
             },
             {
-                "lable": "prompt learning"
+                "lable": "prompt learning",
+                "status": "researched",
+                "description":"基于模板提示的学习, 是NLP当前应用的热门方向。"
             }
         ]
     },
@@ -130,13 +133,23 @@
         "lable": "Task",
         "areas": [
             {
-                "lable": "Named Entity Recognition"
+                "lable": "Named Entity Recognition",
+                "status": "researched"
             },
             {
-                "lable": "Knowledge Graph"
+                "lable": "Knowledge Graph",
+                "status": "researched",
+                "areas": [
+                    {
+                        "lable": "Neo4j",
+                        "description": "一个图数据库库,用来存储实体关系,可以检索",
+                        "status": "researched"
+                    }
+                ]
             },
             {
-                "lable": "Sentiment Analysis"
+                "lable": "Sentiment Analysis",
+                "status": "currently focused on"
             },
             {
                 "lable": "Machine Translation"

@@ -21,7 +21,7 @@ svg .node {
 
 svg .node .ring {
     stroke-width: 4px;
-    stroke: #6ac6ff;
+    stroke: #bbb;
     /* opacity: .2;外圈的阴影，我设置为透明看不见 */
     opacity: 0;
     transition: opacity .6s
@@ -34,7 +34,7 @@ svg .node:hover .ring {
 
 svg .link {
     fill: none;
-    stroke: #6ac6ff;
+    stroke: #bbb;
     opacity: .8;
     stroke-width: 2
 }
@@ -66,7 +66,7 @@ table {
 
 td,
 th {
-    border: 1px solid #dddddd;
+    border: 1px solid #cccccc;
     text-align: left;
     padding: 8px;
 }
