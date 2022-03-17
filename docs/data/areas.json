@@ -3,10 +3,16 @@
         "lable": "Basic",
         "description": "NLP领域相关的理论知识",
         "status": "researched",
-        "areas": [
+        "links": [
+            {
+                "source": "Yue's share PPT",
+                "url": "https://esriis.sharepoint.com/:p:/r/teams/beijing-C3-NLP/Shared%20Documents/C3-N%20L%20P/01Projects/nlp%20basic.pptx?d=w5fd8643fbe5e4eccb3891b0211aeed15&csf=1&web=1&e=xNx9NC"
+            }
+        ],
+               "areas": [
             {
                 "lable": "HMM",
-                "description": "隐马尔可夫模型（Hidden Markov Model），是统计模型，它用来描述一个含有隐含未知参数的马尔可夫过程",
+                "description": "隐马尔可夫模型（Hidden Markov Model),是统计模型,它用来描述一个含有隐含未知参数的马尔可夫过程",
                 "links": [
                     {
                         "source": "wikipedia",
@@ -26,7 +32,7 @@
                 "areas": [
                     {
                         "lable": "LSTM",
-                        "description": "Long Short-Term Memory: 长短期记忆, 是一种时间循环神经网络（RNN）。由于独特的设计结构，LSTM适合于处理和预测时间序列中间隔和延迟非常长的重要事件",
+                        "description": "Long Short-Term Memory: 长短期记忆, 是一种时间循环神经网络（RNN)。由于独特的设计结构,LSTM适合于处理和预测时间序列中间隔和延迟非常长的重要事件",
                         "links": [
                             {
                                 "source": "wikipedia",
@@ -38,7 +44,7 @@
             },
             {
                 "lable": "Feedforward Neural Network",
-                "description": "前馈神经网络（英文：Feedforward Neural Network），为人工智能领域中，最早发明的简单人工神经网络类型。在它内部，参数从输入层向输出层单向传播。有异于循环神经网络，它的内部不会构成有向环",
+                "description": "前馈神经网络(英文:Feedforward Neural Network),为人工智能领域中,最早发明的简单人工神经网络类型。在它内部,参数从输入层向输出层单向传播。有异于循环神经网络,它的内部不会构成有向环",
                 "links": [
                     {
                         "source": "wikipedia",
@@ -74,6 +80,25 @@
         ]
     },
     {
+        "lable": "Frameworks/Tools",
+        "description": "用于实现NLP相关任务的工具或框架",
+        "areas": [
+            {
+                "lable": "spaCy",
+                "status": "researched",
+                "links": [
+                    {
+                        "source": "spaCy tutorial",
+                        "url": " https://course.spacy.io/en/chapter1"
+                    }
+                ]
+            },
+            {
+                "lable": "tensorflow"
+            }
+        ]
+    },
+    {
         "lable": "Paradigms",
         "areas": [
             {
@@ -82,7 +107,13 @@
             {
                 "lable": "prompt learning",
                 "status": "researched",
-                "description":"基于模板提示的学习, 是NLP当前应用的热门方向。"
+                "description": "基于模板提示的学习, 是NLP当前应用的热门方向。",
+                "links": [
+                    {
+                        "source": "Yue's share PPT",
+                        "url": "https://teams.microsoft.com/dl/launcher/launcher.html?url=%2F_%23%2Fl%2Fmessage%2F19%3A16cc8d227d7344579125b6117bda1b6e%40thread.skype%2F1642734567909%3FtenantId%3Daee6e3c9-711e-4c7c-bd27-04f2307db20d%26groupId%3D64d4d2da-f4b7-4bf1-96b0-4e6c40173bcd%26parentMessageId%3D1642734567909%26teamName%3DBeijing%2520R%2526D%2520Center%26channelName%3DTech%2520Share%26createdTime%3D1642734567909&type=message&deeplinkId=468f65c2-68c7-422a-a5a7-578079c9cf09&directDl=true&msLaunch=true&enableMobilePage=true&suppressPrompt=true"
+                    }
+                ]
             }
         ]
     },
@@ -139,10 +170,16 @@
             {
                 "lable": "Knowledge Graph",
                 "status": "researched",
+                "links": [
+                    {
+                        "source": "kaggle demo for Knowledge Graph",
+                        "url": "https://www.kaggle.com/pavansanagapati/knowledge-graph-nlp-tutorial-bert-spacy-nltk"
+                    }
+                ],
                 "areas": [
                     {
                         "lable": "Neo4j",
-                        "description": "一个图数据库库,用来存储实体关系,可以检索",
+                        "description": "一个图数据库库,用来存储实体关系。可以从某个节点出发,检索相关内容。",
                         "status": "researched"
                     }
                 ]

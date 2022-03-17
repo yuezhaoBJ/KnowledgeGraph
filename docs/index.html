@@ -15,6 +15,18 @@
 	<div id="topomap" style="margin: 0 auto;">
 	</div>
 	<table>
+		<tr>
+			<td>Name</td>
+			<td>NLP Areas</td>
+		</tr>
+		<tr>
+			<td>Description</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Link</td>
+			<td></td>
+		</tr>
 	</table>
 </body>
 <script type="text/javascript" src="js/dataUtils.js"></script>
@@ -43,17 +55,17 @@
 						</tr>
 						<tr>
 							<td>Status</td>
-							<td>${t?.prop?.status||'not started'}</td>
+							<td>${t?.prop?.status || ''}</td>
 						</tr>
 						<tr>
 							<td>Description</td>
-							<td>${t?.prop?.description||''}</td>
+							<td>${t?.prop?.description || ''}</td>
 						</tr>
 						<tr>
 							<td>Link</td>
-							<td>${t?.prop?.links?.map((item)=>{
-								return `<a href="${item.url}" target="_blank">${item.source}</a>`
-							}).join(', ')||''}</td>
+							<td>${t?.prop?.links?.map((item) => {
+							return `<a href="${item.url}" target="_blank">${item.source}</a>`
+						}).join('<br>') || ''}</td>
 						</tr>`;
 					var nodeX = JSON.parse(JSON.stringify(t.x));
 					var nodeY = JSON.parse(JSON.stringify(t.y));
