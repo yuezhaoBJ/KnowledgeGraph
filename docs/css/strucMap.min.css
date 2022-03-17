@@ -45,7 +45,9 @@ svg text.desc {
     font-size: 10px;
     font-weight: bolder
 }
-
+.propName{
+    font-weight: bolder;
+}
 
 #title {
     margin: 0 auto;
