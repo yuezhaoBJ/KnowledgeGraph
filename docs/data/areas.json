@@ -175,7 +175,7 @@
         "areas": [
             {
                 "lable": "Named Entity Recognition",
-                "status": "researched"
+                "status": "currently focused on"
             },
             {
                 "lable": "Knowledge Graph",
@@ -196,7 +196,8 @@
             },
             {
                 "lable": "Sentiment Analysis",
-                "status": "currently focused on"
+                "status": "researched"
+               
             },
             {
                 "lable": "Machine Translation"
