@@ -9,7 +9,7 @@
                 "url": "https://esriis.sharepoint.com/:p:/r/teams/beijing-C3-NLP/Shared%20Documents/C3-N%20L%20P/01Projects/nlp%20basic.pptx?d=w5fd8643fbe5e4eccb3891b0211aeed15&csf=1&web=1&e=xNx9NC"
             }
         ],
-               "areas": [
+        "areas": [
             {
                 "lable": "HMM",
                 "description": "隐马尔可夫模型（Hidden Markov Model),是统计模型,它用来描述一个含有隐含未知参数的马尔可夫过程",
@@ -57,6 +57,7 @@
             },
             {
                 "lable": "Word Embedding",
+                "status": "researched",
                 "areas": [
                     {
                         "lable": "Word2Vec",
@@ -94,7 +95,8 @@
                 ]
             },
             {
-                "lable": "tensorflow"
+                "lable": "tensorflow",
+                "status": "researched"
             }
         ]
     },
@@ -102,7 +104,8 @@
         "lable": "Paradigms",
         "areas": [
             {
-                "lable": "pre-training + fine-tuning"
+                "lable": "pre-training + fine-tuning",
+                "status": "researched"
             },
             {
                 "lable": "prompt learning",
@@ -125,15 +128,19 @@
             },
             {
                 "lable": "Transformer",
+                "status": "researched",
                 "areas": [
                     {
                         "lable": "Attention",
+                        "status": "researched",
                         "areas": [
                             {
-                                "lable": "self attention"
+                                "lable": "self attention",
+                                "status": "researched"
                             },
                             {
-                                "lable": "multi head attention"
+                                "lable": "multi head attention",
+                                "status": "researched"
                             }
                         ]
                     }
@@ -147,12 +154,15 @@
                     },
                     {
                         "lable": "BERT",
+                        "status": "researched",
                         "areas": [
                             {
-                                "lable": "Masking Language Model"
+                                "lable": "Masking Language Model",
+                                "status": "researched"
                             },
                             {
-                                "lable": "Next Sentence Predict(NSP)"
+                                "lable": "Next Sentence Predict(NSP)",
+                                "status": "researched"
                             }
                         ]
                     }
