@@ -97,6 +97,56 @@
             {
                 "lable": "tensorflow",
                 "status": "researched"
+            },
+            {
+                "lable": "PyTorch",
+                "status": "currently focused on",
+                "links": [
+                    {
+                        "source": "PyTorch深度学习实践",
+                        "url": "https://www.bilibili.com/video/BV1Y7411d7Ys/?p=5&spm_id_from=pageDriver"
+                    }
+                ],
+                "areas": [
+                    {
+                        "lable": "1. Overview",
+                        "status": "researched"
+                    },
+                    {
+                        "lable": "2.线性模型",
+                        "status": "researched"
+                    },
+                    {
+                        "lable": "3.梯度下降算法",
+                        "status": "researched"
+                    },
+                    {
+                        "lable": "4.反向传播",
+                        "status": "researched"
+                    },
+                    {
+                        "lable": "5.用PyTorch实现线性回归",
+                        "status": "currently focused on"
+                    },
+                    {
+                        "lable": "6.逻辑斯蒂回归"
+                    },
+                    {
+                        "lable": "7.处理多维特征的输入"
+                    },
+                    {
+                        "lable": "8.加载数据集"
+                    },
+                    {
+                        "lable": "9.多分类问题"
+                    },
+                    {
+                        "lable": "10.卷积神经网络"
+                    },
+                    {
+                        "lable": "11.循环神经网络"
+                    }
+                ]
             }
         ]
     },
@@ -175,7 +225,7 @@
         "areas": [
             {
                 "lable": "Named Entity Recognition",
-                "status": "currently focused on"
+                "status": "researched"
             },
             {
                 "lable": "Knowledge Graph",
@@ -197,7 +247,6 @@
             {
                 "lable": "Sentiment Analysis",
                 "status": "researched"
-               
             },
             {
                 "lable": "Machine Translation"
