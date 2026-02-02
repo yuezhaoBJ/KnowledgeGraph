@@ -49,7 +49,7 @@ function createNode(id, label, type, color, data = {}, hidden = false) {
         title = `Subcategory: ${label}`;
     } else if (type === 'direction') {
         size = 28;
-        shape = 'diamond';
+        shape = 'box';  // Changed from diamond to box for rounded rectangle
         font = { size: 13, color: '#333', face: 'Arial' };
         // Use explored color if the direction is already explored
         if (data.explored) {
@@ -79,6 +79,11 @@ function createNode(id, label, type, color, data = {}, hidden = false) {
         data: data,
         hidden: hidden
     };
+    
+    // Add rounded corners for box shapes (category, subcategory, direction)
+    if (type === 'category' || type === 'subcategory' || type === 'direction') {
+        node.borderRadius = 8;  // Rounded rectangle with 8px border radius
+    }
     
     // Add image for core topic node
     if (type === 'core') {
@@ -133,11 +138,17 @@ async function loadData() {
     updateStatus('Loading graph structure...', 'loading');
 
     try {
-        // Step 1: Load graph structure from JSON (required)
+        // Step 1: Generate token if not already available
+        if (!TOKEN) {
+            updateStatus('Generating token...', 'loading');
+            await generateToken();
+        }
+        
+        // Step 2: Load graph structure from JSON (required)
         await loadGraphData();
         updateStatus('Graph structure loaded. Fetching resources...', 'loading');
         
-        // Step 2: Load feature service data (resources)
+        // Step 3: Load feature service data (resources)
         const url = `${FEATURE_SERVICE_URL}?where=1%3D1&outFields=*&f=json&token=${TOKEN}`;
         const response = await fetch(url);
         
@@ -154,7 +165,7 @@ async function loadData() {
         const featureCount = data.features ? data.features.length : 0;
         updateStatus(`Loaded ${featureCount} resources`, 'success');
         
-        // Step 3: Render graph with resources
+        // Step 4: Render graph with resources
         await processData(data.features || []);
     } catch (error) {
         updateStatus(`Error: ${error.message}`, 'error');
@@ -223,10 +234,8 @@ async function processData(features) {
         // Get description and emoji from category data (new structure)
         const categoryDescription = isObject(value) && value.description ? value.description : null;
         const categoryEmoji = isObject(value) && value.emoji ? value.emoji : '';
-        // Format with emoji background color
-        const categoryLabel = categoryEmoji 
-            ? `<span style="background: #f0f0f0; padding: 4px 6px; border-radius: 6px; margin-right: 6px;">${categoryEmoji}</span>${category}`
-            : category;
+        // Simple format: emoji and text on the same line
+        const categoryLabel = categoryEmoji ? `${categoryEmoji} ${category}` : category;
         
         const categoryNode = createNode(
             categoryId,
