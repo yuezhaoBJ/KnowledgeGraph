@@ -228,7 +228,6 @@
         <div class="header">
             <h1>🧠 Deep Reinforcement Learning Knowledge Graph</h1>
             <p>Agent DRL Research Topics & Resources</p>
-            <div class="subtitle">Organized by Research Directions and Key Concepts</div>
         </div>
 
         <div class="controls">
@@ -255,20 +254,16 @@
                 <span>Subcategory</span>
             </div>
             <div class="legend-item">
-                <div class="legend-color" style="background: #d88b8b;"></div>
-                <span>Explored Direction</span>
-            </div>
-            <div class="legend-item">
                 <div class="legend-color" style="background: #a8b3b4;"></div>
                 <span>Unexplored Direction</span>
             </div>
             <div class="legend-item">
-                <div class="legend-color" style="background: #7db8b3;"></div>
-                <span>Resource</span>
+                <div class="legend-color" style="background: #d88b8b;"></div>
+                <span>Explored Direction</span>
             </div>
             <div class="legend-item">
-                <div class="legend-color" style="background: #e6d49a;"></div>
-                <span>Application Domain</span>
+                <div class="legend-color" style="background: #7db8b3;"></div>
+                <span>Resource</span>
             </div>
             </div>
             <div class="info-panel" id="infoPanel">
@@ -280,20 +275,16 @@
 
         <div class="stats">
             <div class="stat-item">
-                <div class="stat-label">Total Nodes</div>
-                <div class="stat-value" id="nodeCount">0</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-label">Total Edges</div>
-                <div class="stat-value" id="edgeCount">0</div>
-            </div>
-            <div class="stat-item">
                 <div class="stat-label">Resources</div>
                 <div class="stat-value" id="resourceCount">0</div>
             </div>
             <div class="stat-item">
                 <div class="stat-label">Research Directions</div>
                 <div class="stat-value" id="directionCount">0</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">Contributors</div>
+                <div class="stat-value" id="contributorCount">0</div>
             </div>
         </div>
     </div>
@@ -374,7 +365,9 @@
                 size = 25;
                 shape = 'diamond';
                 font = { size: 11, color: '#333', face: 'Arial' };
+                // Use explored color if the direction is already explored
                 if (data.explored) {
+                    color = '#d88b8b';  // Soft red for explored
                     title = `${label} (Explored - ${data.resourceCount} resources)`;
                 } else {
                     title = `${label} (Not yet explored)`;
@@ -384,11 +377,6 @@
                 shape = 'dot';
                 font = { size: 0 };  // No label
                 title = `Resource #${data.objectid || id}`;
-            } else if (type === 'domain') {
-                size = 28;
-                shape = 'triangle';
-                font = { size: 12, color: '#333', face: 'Arial', bold: false };
-                title = `Application Domain: ${label}`;
             } else if (type === 'concept') {
                 size = 18;
                 shape = 'dot';
@@ -449,8 +437,6 @@
         // Knowledge graph data (loaded from JSON)
         let graphData = null;
         let DRL_CATEGORIES = {};
-        let TAG_TO_DIRECTION = {};
-        let APPLICATION_DOMAINS = {};
 
         // Load knowledge graph data from JSON file
         // All graph structure is defined in knowledge_graph_data.json
@@ -469,16 +455,8 @@
                 if (!graphData.categories || typeof graphData.categories !== 'object') {
                     throw new Error('Missing or invalid categories in graph data');
                 }
-                if (!graphData.tagMappings || typeof graphData.tagMappings !== 'object') {
-                    throw new Error('Missing or invalid tagMappings in graph data');
-                }
-                if (!graphData.applicationDomains || typeof graphData.applicationDomains !== 'object') {
-                    throw new Error('Missing or invalid applicationDomains in graph data');
-                }
                 
                 DRL_CATEGORIES = graphData.categories;
-                TAG_TO_DIRECTION = graphData.tagMappings;
-                APPLICATION_DOMAINS = graphData.applicationDomains;
                 // Descriptions are now embedded in the node definitions, no separate descriptions object needed
                 
                 return graphData;
@@ -575,35 +553,7 @@
             return bestMatch;
         }
 
-        function findResearchDirection(tag) {
-            // First try mapping table (if exists and user wants to use it)
-            const normalized = normalizeTag(tag);
-            
-            if (TAG_TO_DIRECTION && Object.keys(TAG_TO_DIRECTION).length > 0) {
-                for (const [key, direction] of Object.entries(TAG_TO_DIRECTION)) {
-                    if (normalized.includes(key)) {
-                        return direction;
-                    }
-                }
-            }
-            
-            // Fallback: auto-match (will be called with available directions)
-            return null;
-        }
 
-        function findApplicationDomain(tag) {
-            const normalized = normalizeTag(tag);
-            
-            for (const [key, domainData] of Object.entries(APPLICATION_DOMAINS)) {
-                const domain = typeof domainData === 'string' ? domainData : domainData.name;
-                // Check both key and domain name
-                if (normalized.includes(key) || normalized.includes(normalizeTag(domain))) {
-                    return domain;
-                }
-            }
-            
-            return null;
-        }
 
         async function processData(features) {
             // Graph structure must be loaded from JSON
@@ -903,54 +853,9 @@
                 }
             });
 
-            // Create all application domain nodes (hidden by default, placed in outer area)
-            const domainSet = new Set();
-            const domainNodes = new Map();
-            
-            // Calculate positions for domain nodes in a circle around the core
-            const domainCount = Object.keys(APPLICATION_DOMAINS).length;
-            const radius = 400; // Distance from center
-            let angleStep = (2 * Math.PI) / domainCount;
-            let currentAngle = 0;
-            
-            Object.entries(APPLICATION_DOMAINS).forEach(([key, domainData], index) => {
-                const domain = typeof domainData === 'string' ? domainData : domainData.name;
-                const domainDescription = typeof domainData === 'object' ? domainData.description : null;
-                const domainId = getNodeId('domain', domain);
-                if (!domainSet.has(domainId)) {
-                    domainSet.add(domainId);
-                    const x = radius * Math.cos(currentAngle);
-                    const y = radius * Math.sin(currentAngle);
-                    
-                    const domainNode = createNode(
-                        domainId,
-                        domain,
-                        'domain',
-                        '#e6d49a',
-                        { 
-                            type: 'domain', 
-                            label: domain,
-                            description: domainDescription
-                        },
-                        true  // Hidden by default
-                    );
-                    
-                    // Set initial position for outer placement
-                    domainNode.x = x;
-                    domainNode.y = y;
-                    domainNode.fixed = { x: false, y: false }; // Allow physics to adjust but start from outer position
-                    
-                    nodes.add(domainNode);
-                    allNodes.set(domainId, domainNode);
-                    nodeRelations.set(domainId, { parent: null, children: [], siblings: [] });
-                    domainNodes.set(domain, domainId);
-                    
-                    currentAngle += angleStep;
-                }
-            });
-
             const resourceSet = new Set();
             const resourceToDirections = new Map();
+            const contributorStats = new Map(); // Track contributor statistics
 
             // Process resources and map them to research directions
             features.forEach((feature, index) => {
@@ -998,6 +903,13 @@
                     nodes.add(resourceNode);
                     allNodes.set(resourceId, resourceNode);
                     nodeRelations.set(resourceId, { parent: null, children: [], siblings: [] });
+                    
+                    // Track contributor statistics
+                    if (attrs.employee_name) {
+                        const contributorName = attrs.employee_name;
+                        const currentCount = contributorStats.get(contributorName) || 0;
+                        contributorStats.set(contributorName, currentCount + 1);
+                    }
                 }
 
                 // Find research directions for this resource using auto-matching
@@ -1010,42 +922,11 @@
                     const tags = attrs.tags.split(',').map(t => t.trim()).filter(t => t);
                     
                     tags.forEach(tag => {
-                        // First try mapping table
-                        let direction = findResearchDirection(tag);
-                        
-                        // If no mapping found, use auto-matching
-                        if (!direction && availableDirections.length > 0) {
-                            direction = autoMatchResearchDirection(tag, availableDirections);
-                        }
-                        
-                        if (direction && directionNodes.has(direction)) {
-                            resourceDirections.add(direction);
-                        }
-                        
-                        // Also check for application domains
-                        const domain = findApplicationDomain(tag);
-                        if (domain) {
-                            const domainId = domainNodes.get(domain);
-                            if (domainId) {
-                                // Connect resource to domain
-                                const resourceDomainEdgeId = `edge_${resourceId}_${domainId}`;
-                                const resourceDomainEdge = {
-                                    id: resourceDomainEdgeId,
-                                    from: resourceId,
-                                    to: domainId,
-                                    label: 'applies to',
-                                    color: { color: '#e6d49a' },
-                                    arrows: 'to',
-                                    hidden: true  // Hidden initially, shown when resource is visible
-                                };
-                                edges.add(resourceDomainEdge);
-                                allEdges.set(resourceDomainEdgeId, resourceDomainEdge);
-                                
-                                // Store relationship
-                                const domainRelation = nodeRelations.get(domainId);
-                                if (domainRelation) {
-                                    domainRelation.children.push(resourceId);
-                                }
+                        // Use auto-matching to find research direction
+                        if (availableDirections.length > 0) {
+                            const direction = autoMatchResearchDirection(tag, availableDirections);
+                            if (direction && directionNodes.has(direction)) {
+                                resourceDirections.add(direction);
                             }
                         }
                     });
@@ -1101,15 +982,24 @@
                     // Mark as explored
                     const node = nodes.get(directionId);
                     if (node) {
+                        // Update in vis-network
                         nodes.update({
                             id: directionId,
-                            color: '#d88b8b',  // Red for explored
+                            color: '#d88b8b',  // Soft red for explored
                             data: {
                                 ...node.data,
                                 explored: true,
                                 resourceCount: resourceCount
                             }
                         });
+                        
+                        // Also update in allNodes map to keep it in sync
+                        const allNode = allNodes.get(directionId);
+                        if (allNode) {
+                            allNode.color = '#d88b8b';
+                            allNode.data.explored = true;
+                            allNode.data.resourceCount = resourceCount;
+                        }
                         
                         // Update edge color
                         const edgeId = directionEdgeIds.get(direction);
@@ -1118,6 +1008,12 @@
                                 id: edgeId,
                                 color: { color: '#d88b8b' }
                             });
+                            
+                            // Also update in allEdges map
+                            const allEdge = allEdges.get(edgeId);
+                            if (allEdge) {
+                                allEdge.color = { color: '#d88b8b' };
+                            }
                         }
                         
                         // Update category and subcategory explored counts
@@ -1206,10 +1102,11 @@
             });
             
             const exploredCount = Array.from(directionResourceCount.values()).filter(count => count > 0).length;
-            document.getElementById('nodeCount').textContent = nodes.length;
-            document.getElementById('edgeCount').textContent = edges.length;
             document.getElementById('resourceCount').textContent = resourceSet.size;
             document.getElementById('directionCount').textContent = `${exploredCount}/${totalDirections}`;
+
+            // Update contributors panel
+            updateContributorsPanel(contributorStats);
 
             // Initialize or update network
             const container = document.getElementById('graph');
@@ -1390,6 +1287,14 @@
             return node.data && node.data.description ? node.data.description : null;
         }
 
+        function updateContributorsPanel(contributorStats) {
+            const contributorCountElement = document.getElementById('contributorCount');
+            if (contributorCountElement) {
+                const totalContributors = contributorStats.size;
+                contributorCountElement.textContent = totalContributors;
+            }
+        }
+
         function showNodeInfo(node) {
             const panel = document.getElementById('infoPanel');
             const title = document.getElementById('infoTitle');
@@ -1457,11 +1362,6 @@
                         const date = new Date(node.data.metadata.creationDate);
                         html += `<p style="font-size: 11px; color: #666;">Created: ${date.toLocaleString()}</p>`;
                     }
-                }
-            } else if (node.data.type === 'domain') {
-                html += `<p><strong>Application Domain:</strong> ${node.data.label}</p>`;
-                if (!description) {
-                    html += `<p>Domain where DRL is applied</p>`;
                 }
             } else if (node.data.type === 'concept') {
                 html += `<p><strong>Key Concept:</strong> ${node.data.label}</p>`;
@@ -1566,7 +1466,7 @@
         }
 
         function resetView() {
-            // Reset to initial view (show only core, categories, and application domains)
+            // Reset to initial view (show only core and categories)
             currentFocusNodeId = null;
             initialView = true;
             clearHighlight();
@@ -1576,7 +1476,7 @@
             const edgeUpdates = [];
             
             allNodes.forEach((node, nodeId) => {
-                // Show: core and categories only (application domains hidden by default)
+                // Show: core and categories only
                 const shouldShow = node.data.type === 'core' || node.data.type === 'category';
                 const newHidden = !shouldShow;
                 if (node.hidden !== newHidden) {
@@ -1588,7 +1488,7 @@
             allEdges.forEach((edge, edgeId) => {
                 const fromNode = allNodes.get(edge.from);
                 const toNode = allNodes.get(edge.to);
-                // Show edges between visible nodes (core-category, but not resource-domain in initial view)
+                // Show edges between visible nodes (core-category)
                 const shouldShow = fromNode && !fromNode.hidden && toNode && !toNode.hidden &&
                                   !(fromNode.data.type === 'resource' || toNode.data.type === 'resource');
                 const newHidden = !shouldShow;
@@ -1653,7 +1553,6 @@
             // 2. All ancestors up to root (core topic)
             // 3. Direct children only (one level down, no grandchildren)
             // 4. If current node is a leaf node, show all other leaf nodes with the same root
-            // 5. Application domains connected to visible resources
             const nodesToShow = new Set([nodeId]);
             
             // Collect all ancestors up to root
@@ -1681,23 +1580,6 @@
                     });
                 }
             }
-            
-            // Include application domains that are connected to visible resources
-            // (Application domains are shown only when their connected resources are visible)
-            allNodes.forEach((node, id) => {
-                if (node.data.type === 'resource' && nodesToShow.has(id)) {
-                    // Find connected domain nodes
-                    allEdges.forEach((edge, edgeId) => {
-                        if (edge.from === id || edge.to === id) {
-                            const otherNodeId = edge.from === id ? edge.to : edge.from;
-                            const otherNode = allNodes.get(otherNodeId);
-                            if (otherNode && otherNode.data.type === 'domain') {
-                                nodesToShow.add(otherNodeId);
-                            }
-                        }
-                    });
-                }
-            });
             
             // Update node visibility
             const nodeUpdates = [];

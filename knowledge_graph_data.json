@@ -288,31 +288,5 @@
         "theory": "RL Theory & Analysis",
         "theoretical": "RL Theory & Analysis",
         "analysis": "RL Theory & Analysis"
-    },
-    "applicationDomains": {
-        "GIS": {
-            "name": "GIS",
-            "description": "Geographic Information Systems, applying RL for spatial analysis, route optimization, and geographic data processing."
-        },
-        "Robotics": {
-            "name": "Robotics",
-            "description": "Robotic control and manipulation, using RL to learn complex motor skills and adaptive behaviors."
-        },
-        "Game": {
-            "name": "Game",
-            "description": "Game playing applications, where RL has achieved superhuman performance in board games and video games."
-        },
-        "Control": {
-            "name": "Control",
-            "description": "Control systems applications, using RL for adaptive control in dynamic environments."
-        },
-        "Navigation": {
-            "name": "Navigation",
-            "description": "Navigation and path planning, applying RL for autonomous navigation in complex environments."
-        },
-        "Simulation": {
-            "name": "Simulation",
-            "description": "Simulation-based training, using RL to learn policies in simulated environments before real-world deployment."
-        }
     }
 }
