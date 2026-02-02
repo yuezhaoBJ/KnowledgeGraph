@@ -1,0 +1,318 @@
+{
+    "coreTopic": {
+        "name": "Deep Reinforcement Learning",
+        "description": "Deep Reinforcement Learning (DRL) combines reinforcement learning with deep neural networks to enable agents to learn optimal policies in complex, high-dimensional environments. It has revolutionized AI by achieving superhuman performance in games, robotics, and autonomous systems."
+    },
+    "categories": {
+        "Foundations": {
+            "description": "Fundamental concepts and mathematical foundations of reinforcement learning, including MDPs, value functions, and the exploration-exploitation trade-off.",
+            "directions": [
+                {
+                    "name": "Markov Decision Process (MDP)",
+                    "description": "A mathematical framework for modeling decision-making in situations where outcomes are partly random and partly under the control of a decision maker."
+                },
+                {
+                    "name": "State, Action, Reward",
+                    "description": "The fundamental components of RL: states represent the current situation, actions are choices available to the agent, and rewards provide feedback on action quality."
+                },
+                {
+                    "name": "Policy & Value Function",
+                    "description": "A policy defines the agent's behavior, while value functions estimate the expected future reward, guiding policy improvement."
+                }
+            ]
+        },
+        "Algorithm Families": {
+            "description": "Major families of DRL algorithms organized by their learning approach: value-based, policy-based, and actor-critic methods.",
+            "subcategories": {
+                "Value-Based Methods": {
+                    "description": "Algorithms that learn value functions to estimate the expected return of states or state-action pairs.",
+                    "directions": [
+                        {
+                            "name": "Q-Learning",
+                            "description": "A model-free, off-policy algorithm that learns action-value functions, enabling optimal policy learning without a model of the environment."
+                        },
+                        {
+                            "name": "Deep Q-Network (DQN)",
+                            "description": "A breakthrough algorithm that combines Q-learning with deep neural networks, enabling RL in high-dimensional state spaces."
+                        }
+                    ]
+                },
+                "Policy-Based Methods": {
+                    "description": "Algorithms that directly optimize the policy function without learning value functions.",
+                    "directions": [
+                        {
+                            "name": "Policy Gradient (PG)",
+                            "description": "A class of algorithms that optimize policies by directly computing gradients of expected return with respect to policy parameters."
+                        },
+                        {
+                            "name": "TRPO",
+                            "description": "Trust Region Policy Optimization, a method that constrains policy updates to a trust region for stability."
+                        },
+                        {
+                            "name": "PPO",
+                            "description": "Proximal Policy Optimization, a popular on-policy algorithm that uses clipping to ensure stable policy updates."
+                        },
+                        {
+                            "name": "GRPO",
+                            "description": "Group Relative Policy Optimization, an advanced policy optimization method that considers relative performance within groups."
+                        },
+                        {
+                            "name": "DPO",
+                            "description": "Direct Preference Optimization, a method that directly optimizes the policy by learning a preference function over actions."
+                        }
+                    ]
+                },
+                "Actor-Critic Methods": {
+                    "description": "Algorithms that combine policy-based and value-based approaches, using both actor and critic networks.",
+                    "directions": [
+                        {
+                            "name": "A2C",
+                            "description": "Advantage Actor-Critic, a synchronous variant that combines policy and value learning for stable, efficient training."
+                        }
+                    ]
+                }
+            }
+        },
+        "Learning Paradigms": {
+            "description": "Different learning paradigms in RL, distinguishing between on-policy vs off-policy learning and model-free vs model-based approaches.",
+            "directions": [
+                {
+                    "name": "On-Policy Learning",
+                    "description": "Learning methods that use data collected by the current policy, ensuring consistency but potentially less sample efficient."
+                },
+                {
+                    "name": "Off-Policy Learning",
+                    "description": "Learning methods that can use data from different policies, improving sample efficiency but requiring careful value estimation."
+                },
+                {
+                    "name": "Model-Free RL",
+                    "description": "RL methods that learn policies or value functions without learning a model of the environment dynamics."
+                },
+                {
+                    "name": "Model-Based RL",
+                    "description": "RL methods that learn a model of the environment and use it for planning or policy improvement."
+                }
+            ]
+        },
+        "Advanced Topics": {
+            "description": "Advanced research topics in reinforcement learning, including multi-agent systems, hierarchical learning, and meta-learning.",
+            "directions": [
+                {
+                    "name": "Multi-Agent Reinforcement Learning (MARL)",
+                    "description": "RL in environments with multiple agents, requiring coordination and competition strategies."
+                },
+                {
+                    "name": "Meta Reinforcement Learning",
+                    "description": "Learning to learn, enabling agents to quickly adapt to new tasks using prior experience."
+                },
+                {
+                    "name": "Inverse Reinforcement Learning",
+                    "description": "Inferring reward functions from observed behavior, useful for understanding expert strategies."
+                },
+                {
+                    "name": "Offline Reinforcement Learning",
+                    "description": "Learning policies from fixed datasets without online interaction, important for real-world applications."
+                }
+            ]
+        },
+        "Stability & Optimization Techniques": {
+            "description": "Techniques for improving training stability and optimization efficiency in deep reinforcement learning.",
+            "directions": [
+                {
+                    "name": "Experience Replay",
+                    "description": "Storing and reusing past experiences to break correlation and improve sample efficiency."
+                },
+                {
+                    "name": "Reward Normalization",
+                    "description": "Normalizing rewards to improve training stability and convergence speed."
+                },
+                {
+                    "name": "Clipping & Trust Regions",
+                    "description": "Constraining policy updates to prevent large changes that could destabilize learning."
+                },
+                {
+                    "name": "Curriculum Learning",
+                    "description": "Gradually increasing task difficulty to improve learning efficiency and final performance."
+                }
+            ]
+        },
+        "Control & Applications": {
+            "description": "Applications of reinforcement learning in various control and decision-making domains.",
+            "directions": [
+                {
+                    "name": "Discrete Control",
+                    "description": "RL for discrete action spaces, common in games and discrete decision problems."
+                },
+                {
+                    "name": "Continuous Control",
+                    "description": "RL for continuous action spaces, essential for robotics and physical control tasks."
+                },
+                {
+                    "name": "Robotics Control",
+                    "description": "Applying RL to robotic manipulation, locomotion, and autonomous navigation."
+                },
+                {
+                    "name": "Game Playing",
+                    "description": "Using RL to achieve superhuman performance in board games, video games, and strategic games."
+                },
+                {
+                    "name": "Autonomous Driving",
+                    "description": "RL for autonomous vehicle control, path planning, and decision-making in traffic."
+                },
+                {
+                    "name": "Recommendation Systems",
+                    "description": "Using RL to optimize recommendations and personalize user experiences."
+                }
+            ]
+        },
+        "Frameworks & Tools": {
+            "description": "Software frameworks and tools for implementing and experimenting with reinforcement learning algorithms.",
+            "directions": [
+                {
+                    "name": "OpenAI Gym / Gymnasium",
+                    "description": "A standard API for reinforcement learning environments, providing a wide range of benchmark tasks."
+                },
+                {
+                    "name": "Stable-Baselines3",
+                    "description": "A set of reliable implementations of reinforcement learning algorithms in PyTorch."
+                },
+                {
+                    "name": "RLlib",
+                    "description": "A scalable reinforcement learning library that supports distributed training and various algorithms."
+                },
+                {
+                    "name": "PettingZoo",
+                    "description": "A library for multi-agent reinforcement learning environments and algorithms."
+                },
+                {
+                    "name": "MuJoCo",
+                    "description": "A physics engine for continuous control and robotics simulation, widely used in RL research."
+                }
+            ]
+        },
+        "Agent Reinforcement Learning": {
+            "description": "Frameworks and platforms for training, evaluating, and optimizing intelligent agents using reinforcement learning, often integrated with large language models (LLMs).",
+            "directions": [
+                {
+                    "name": "agent-lightning",
+                    "description": "A flexible and scalable framework developed by Microsoft for training LLM-based agents using reinforcement learning, supporting multi-agent scenarios and modular architectures."
+                },
+                {
+                    "name": "OpenRLHF",
+                    "description": "A high-performance and user-friendly open-source RLHF framework designed for large language model alignment, built on Ray, vLLM, ZeRO-3, and HuggingFace Transformers."
+                },
+                {
+                    "name": "ART",
+                    "description": "An open reinforcement learning framework developed by OpenPipe, enabling large language models to learn from experience to improve agent reliability and robustness."
+                },
+                {
+                    "name": "Qlib",
+                    "description": "An open-source quantitative research and investment platform developed by Microsoft Research Asia, leveraging AI and reinforcement learning for end-to-end financial decision-making."
+                },
+                {
+                    "name": "OpenManus-RL",
+                    "description": "An open-source agent optimization framework led by UIUC and MetaGPT, focusing on advanced reinforcement learning techniques for intelligent agents."
+                },
+                {
+                    "name": "Gymnasium",
+                    "description": "A standard API specification for single-agent reinforcement learning environments developed by the Farama Foundation, providing widely used benchmark environments and tools."
+                }
+            ]
+        }
+    },
+    "tagMappings": {
+        "ppo": "PPO",
+        "proximal policy optimization": "PPO",
+        "trpo": "TRPO",
+        "trust region policy optimization": "TRPO",
+        "trust region": "TRPO",
+        "reinforce": "REINFORCE",
+        "policy gradient": "REINFORCE",
+        "dqn": "DQN",
+        "deep q-network": "DQN",
+        "double dqn": "Double DQN",
+        "dueling dqn": "Dueling DQN",
+        "rainbow": "Rainbow DQN",
+        "rainbow dqn": "Rainbow DQN",
+        "q-learning": "DQN",
+        "a3c": "A3C",
+        "asynchronous advantage actor-critic": "A3C",
+        "a2c": "A2C",
+        "advantage actor-critic": "A2C",
+        "ddpg": "DDPG",
+        "deep deterministic policy gradient": "DDPG",
+        "td3": "TD3",
+        "twin delayed ddpg": "TD3",
+        "sac": "SAC",
+        "soft actor-critic": "SAC",
+        "model-based": "Model-Based RL",
+        "world model": "Model-Based RL",
+        "planning": "Model-Based RL",
+        "multi-agent": "Multi-Agent RL",
+        "multiagent": "Multi-Agent RL",
+        "marl": "Multi-Agent RL",
+        "hierarchical": "Hierarchical RL",
+        "hierarchical rl": "Hierarchical RL",
+        "option": "Hierarchical RL",
+        "transfer": "Transfer Learning in RL",
+        "transfer learning": "Transfer Learning in RL",
+        "domain adaptation": "Transfer Learning in RL",
+        "imitation": "Imitation Learning",
+        "imitation learning": "Imitation Learning",
+        "behavioral cloning": "Imitation Learning",
+        "inverse": "Inverse RL",
+        "inverse rl": "Inverse RL",
+        "irl": "Inverse RL",
+        "meta": "Meta-Learning in RL",
+        "meta-learning": "Meta-Learning in RL",
+        "meta rl": "Meta-Learning in RL",
+        "safe": "Safe RL",
+        "safe rl": "Safe RL",
+        "constraint": "Safe RL",
+        "exploration": "Exploration Strategies",
+        "exploration strategy": "Exploration Strategies",
+        "curiosity": "Exploration Strategies",
+        "continuous": "Continuous Control",
+        "continuous control": "Continuous Control",
+        "discrete": "Discrete Control",
+        "discrete control": "Discrete Control",
+        "off-policy": "Off-Policy Learning",
+        "off policy": "Off-Policy Learning",
+        "on-policy": "On-Policy Learning",
+        "on policy": "On-Policy Learning",
+        "distributed": "Distributed RL",
+        "distributed rl": "Distributed RL",
+        "sample efficiency": "Sample Efficiency",
+        "sample-efficient": "Sample Efficiency",
+        "generalization": "Generalization",
+        "theory": "RL Theory & Analysis",
+        "theoretical": "RL Theory & Analysis",
+        "analysis": "RL Theory & Analysis"
+    },
+    "applicationDomains": {
+        "GIS": {
+            "name": "GIS",
+            "description": "Geographic Information Systems, applying RL for spatial analysis, route optimization, and geographic data processing."
+        },
+        "Robotics": {
+            "name": "Robotics",
+            "description": "Robotic control and manipulation, using RL to learn complex motor skills and adaptive behaviors."
+        },
+        "Game": {
+            "name": "Game",
+            "description": "Game playing applications, where RL has achieved superhuman performance in board games and video games."
+        },
+        "Control": {
+            "name": "Control",
+            "description": "Control systems applications, using RL for adaptive control in dynamic environments."
+        },
+        "Navigation": {
+            "name": "Navigation",
+            "description": "Navigation and path planning, applying RL for autonomous navigation in complex environments."
+        },
+        "Simulation": {
+            "name": "Simulation",
+            "description": "Simulation-based training, using RL to learn policies in simulated environments before real-world deployment."
+        }
+    }
+}
