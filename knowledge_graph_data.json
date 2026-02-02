@@ -5,6 +5,7 @@
     },
     "categories": {
         "Foundations": {
+            "emoji": "📚",
             "description": "Fundamental concepts and mathematical foundations of reinforcement learning, including MDPs, value functions, and the exploration-exploitation trade-off.",
             "directions": [
                 {
@@ -18,10 +19,15 @@
                 {
                     "name": "Policy & Value Function",
                     "description": "A policy defines the agent's behavior, while value functions estimate the expected future reward, guiding policy improvement."
+                },
+                {
+                    "name": "LLM related",
+                    "description": "Large Language Model, a type of transformer-based neural network that is pre-trained on a large corpus of text and can be fine-tuned for specific tasks."
                 }
             ]
         },
-        "Algorithm Families": {
+        "Algorithms": {
+            "emoji": "⚙️",
             "description": "Major families of DRL algorithms organized by their learning approach: value-based, policy-based, and actor-critic methods.",
             "subcategories": {
                 "Value-Based Methods": {
@@ -73,28 +79,8 @@
                 }
             }
         },
-        "Learning Paradigms": {
-            "description": "Different learning paradigms in RL, distinguishing between on-policy vs off-policy learning and model-free vs model-based approaches.",
-            "directions": [
-                {
-                    "name": "On-Policy Learning",
-                    "description": "Learning methods that use data collected by the current policy, ensuring consistency but potentially less sample efficient."
-                },
-                {
-                    "name": "Off-Policy Learning",
-                    "description": "Learning methods that can use data from different policies, improving sample efficiency but requiring careful value estimation."
-                },
-                {
-                    "name": "Model-Free RL",
-                    "description": "RL methods that learn policies or value functions without learning a model of the environment dynamics."
-                },
-                {
-                    "name": "Model-Based RL",
-                    "description": "RL methods that learn a model of the environment and use it for planning or policy improvement."
-                }
-            ]
-        },
         "Advanced Topics": {
+            "emoji": "🚀",
             "description": "Advanced research topics in reinforcement learning, including multi-agent systems, hierarchical learning, and meta-learning.",
             "directions": [
                 {
@@ -115,16 +101,13 @@
                 }
             ]
         },
-        "Stability & Optimization Techniques": {
+        "Optimization Techniques": {
+            "emoji": "⚡",
             "description": "Techniques for improving training stability and optimization efficiency in deep reinforcement learning.",
             "directions": [
                 {
                     "name": "Experience Replay",
                     "description": "Storing and reusing past experiences to break correlation and improve sample efficiency."
-                },
-                {
-                    "name": "Reward Normalization",
-                    "description": "Normalizing rewards to improve training stability and convergence speed."
                 },
                 {
                     "name": "Clipping & Trust Regions",
@@ -136,17 +119,10 @@
                 }
             ]
         },
-        "Control & Applications": {
+        "Applications": {
+            "emoji": "🎯",
             "description": "Applications of reinforcement learning in various control and decision-making domains.",
             "directions": [
-                {
-                    "name": "Discrete Control",
-                    "description": "RL for discrete action spaces, common in games and discrete decision problems."
-                },
-                {
-                    "name": "Continuous Control",
-                    "description": "RL for continuous action spaces, essential for robotics and physical control tasks."
-                },
                 {
                     "name": "Robotics Control",
                     "description": "Applying RL to robotic manipulation, locomotion, and autonomous navigation."
@@ -165,24 +141,23 @@
                 }
             ]
         },
-        "Frameworks & Tools": {
+        "Frameworks": {
+            "emoji": "🏗️",
             "description": "Software frameworks and tools for implementing and experimenting with reinforcement learning algorithms.",
+            "directions": [
+                {
+                    "name": "Stable-Baselines3",
+                    "description": "A set of reliable implementations of reinforcement learning algorithms in PyTorch."
+                }
+            ]
+        },
+        "Tools": {
+            "emoji": "🔧",
+            "description": "Tools for reinforcement learning, including environment libraries, evaluation frameworks, and visualization tools.",
             "directions": [
                 {
                     "name": "OpenAI Gym / Gymnasium",
                     "description": "A standard API for reinforcement learning environments, providing a wide range of benchmark tasks."
-                },
-                {
-                    "name": "Stable-Baselines3",
-                    "description": "A set of reliable implementations of reinforcement learning algorithms in PyTorch."
-                },
-                {
-                    "name": "RLlib",
-                    "description": "A scalable reinforcement learning library that supports distributed training and various algorithms."
-                },
-                {
-                    "name": "PettingZoo",
-                    "description": "A library for multi-agent reinforcement learning environments and algorithms."
                 },
                 {
                     "name": "MuJoCo",
@@ -191,6 +166,7 @@
             ]
         },
         "Agent Reinforcement Learning": {
+            "emoji": "🤖",
             "description": "Frameworks and platforms for training, evaluating, and optimizing intelligent agents using reinforcement learning, often integrated with large language models (LLMs).",
             "directions": [
                 {
@@ -219,74 +195,5 @@
                 }
             ]
         }
-    },
-    "tagMappings": {
-        "ppo": "PPO",
-        "proximal policy optimization": "PPO",
-        "trpo": "TRPO",
-        "trust region policy optimization": "TRPO",
-        "trust region": "TRPO",
-        "reinforce": "REINFORCE",
-        "policy gradient": "REINFORCE",
-        "dqn": "DQN",
-        "deep q-network": "DQN",
-        "double dqn": "Double DQN",
-        "dueling dqn": "Dueling DQN",
-        "rainbow": "Rainbow DQN",
-        "rainbow dqn": "Rainbow DQN",
-        "q-learning": "DQN",
-        "a3c": "A3C",
-        "asynchronous advantage actor-critic": "A3C",
-        "a2c": "A2C",
-        "advantage actor-critic": "A2C",
-        "ddpg": "DDPG",
-        "deep deterministic policy gradient": "DDPG",
-        "td3": "TD3",
-        "twin delayed ddpg": "TD3",
-        "sac": "SAC",
-        "soft actor-critic": "SAC",
-        "model-based": "Model-Based RL",
-        "world model": "Model-Based RL",
-        "planning": "Model-Based RL",
-        "multi-agent": "Multi-Agent RL",
-        "multiagent": "Multi-Agent RL",
-        "marl": "Multi-Agent RL",
-        "hierarchical": "Hierarchical RL",
-        "hierarchical rl": "Hierarchical RL",
-        "option": "Hierarchical RL",
-        "transfer": "Transfer Learning in RL",
-        "transfer learning": "Transfer Learning in RL",
-        "domain adaptation": "Transfer Learning in RL",
-        "imitation": "Imitation Learning",
-        "imitation learning": "Imitation Learning",
-        "behavioral cloning": "Imitation Learning",
-        "inverse": "Inverse RL",
-        "inverse rl": "Inverse RL",
-        "irl": "Inverse RL",
-        "meta": "Meta-Learning in RL",
-        "meta-learning": "Meta-Learning in RL",
-        "meta rl": "Meta-Learning in RL",
-        "safe": "Safe RL",
-        "safe rl": "Safe RL",
-        "constraint": "Safe RL",
-        "exploration": "Exploration Strategies",
-        "exploration strategy": "Exploration Strategies",
-        "curiosity": "Exploration Strategies",
-        "continuous": "Continuous Control",
-        "continuous control": "Continuous Control",
-        "discrete": "Discrete Control",
-        "discrete control": "Discrete Control",
-        "off-policy": "Off-Policy Learning",
-        "off policy": "Off-Policy Learning",
-        "on-policy": "On-Policy Learning",
-        "on policy": "On-Policy Learning",
-        "distributed": "Distributed RL",
-        "distributed rl": "Distributed RL",
-        "sample efficiency": "Sample Efficiency",
-        "sample-efficient": "Sample Efficiency",
-        "generalization": "Generalization",
-        "theory": "RL Theory & Analysis",
-        "theoretical": "RL Theory & Analysis",
-        "analysis": "RL Theory & Analysis"
     }
 }
